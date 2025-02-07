@@ -1,6 +1,4 @@
 @import url(https://db.onlinewebfonts.com/c/a9407f8f4568bef930602728fa9b7f04?family=Antonio);
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,165 +6,240 @@
 * {
   margin: 0;
   padding: 0;
-  font-family:'Antonio', Times, serif;
+  font-family: "Antonio", Times, serif;
   font-weight: 100;
   font-style: normal;
   scroll-behavior: smooth;
   text-decoration: none;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-body{
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
   background-color: #0e0f17;
+  min-width: 320px;
 }
 
+/* Rest of the previous responsive CSS remains the same */
 
-.layout_heading{
-  transition: all .2s linear;
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
 }
 
-.rhombus{
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+/* Layout and Navigation Responsiveness */
+.layout_heading {
+  transition: all 0.2s linear;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.rhombus {
   cursor: pointer;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
 
-.layout_heading:hover{
-    transform: translateX(10px);
+.layout_heading:hover {
+  transform: translateX(10px);
 }
 
-
-.nav:hover .rhombus{
+.nav:hover .rhombus {
   transform: rotateZ(90deg);
 }
 
-.social a{
-  transition: all .2s linear;
+/* Social Links Responsiveness */
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.social a:hover{
+.social a {
+  transition: all 0.2s linear;
+}
+
+.social a:hover {
   transform: scale(1.1);
 }
 
-.name h1{
-  animation-name: shift_h1 ;
+/* Name Animation */
+.name h1,
+.name h2,
+.name p {
   animation-duration: 2s;
 }
-.name h2{
-  animation-name: shift_h2 ;
-  animation-duration: 2s;
-}
-.name p{
-  animation-name: shift_p ;
-  animation-duration: 2s;
-}
-
 
 @keyframes shift_h1 {
-  from {margin-left: -5rem}
-  to {margin-left: 0rem}
+  from {
+    margin-left: -5rem;
+  }
+  to {
+    margin-left: 0rem;
+  }
 }
 
 @keyframes shift_h2 {
-  from {margin-left: -15rem}
-  to {margin-left: 0rem}
+  from {
+    margin-left: -15rem;
+  }
+  to {
+    margin-left: 0rem;
+  }
 }
 
 @keyframes shift_p {
-  from {margin-left: -25rem}
-  to {margin-left: 0rem}
+  from {
+    margin-left: -25rem;
+  }
+  to {
+    margin-left: 0rem;
+  }
 }
 
-.nav_heading{
-  transition: all .2s linear;
+.nav_heading {
+  transition: all 0.2s linear;
 }
 
-.nav_heading:hover{
+.nav_heading:hover {
   color: #04ffd8;
   transform: scale(1.1);
 }
 
+/* Card Responsiveness */
 .card {
   background-color: #282828;
   border-radius: 1rem;
   margin: 1rem;
-  width: 25vw;
-  height: 50vh;
-  transition: transform .3s linear;
-  -webkit-transition: transform .3s linear;
-  -moz-transition: transform .3s linear;
-  -ms-transition: transform .3s linear;
-  -o-transition: transform .3s linear;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  transition: transform 0.3s linear;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: calc(100% - 2rem);
+    margin: 1rem auto;
+  }
 }
 
 .card:hover {
   transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  -o-transform: scale(1.1);
 }
 
 .founder_img {
-  height: 13vw;
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
 }
 
 .card-body {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
 }
 
 .card-body h5 {
   font-size: 2rem;
+  text-align: center;
+  width: 100%;
 }
 
 .img {
   height: 7vh;
   width: 7vh;
   border-radius: 50%;
-  border-width: .1rem;
-  border-color: #ff243d;
+  border: 0.1rem solid #ff243d;
 }
 
-.img img{
+.img img {
   border-radius: 50%;
-  height: 4rem;
-  width: 4rem;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
-
 
 .back {
   text-align: left;
-  margin-left: 4%;
-  margin-top: 5%;
+  margin: 5% 4%;
   width: 92%;
-  height: 90%;
+  height: auto;
   display: none;
   transform: rotateY(180deg);
   font-size: 1.3rem;
-  border-style: solid;
-  border-color: white;
-  border-width: .01rem;
-  border-radius: .5rem;
-
+  border: 0.01rem solid white;
+  border-radius: 0.5rem;
 }
 
 .back p {
   padding: 10%;
 }
 
-.career_path{
+/* Responsive Animations */
+.career_path {
   animation-name: shift;
   animation-duration: 2.5s;
 }
 
 @keyframes shift {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.circle{
-  animation: circle 4s ;
+.circle {
+  animation: circle 4s;
 }
 
-@keyframes circle{
-  from {stroke-dashoffset: 0;}
+@keyframes circle {
+  from {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Responsive Utility Classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
 }
